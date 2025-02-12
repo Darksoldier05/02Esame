@@ -1,0 +1,1609 @@
+// ==========================================================================
+// Variabili di Stile
+// ==========================================================================
+
+// Definizione dei colori principali dell'interfaccia
+$primary-color: #ff6f61; // Colore primario, usato per elementi principali
+$secondary-color: #ffcc00; // Colore secondario, complementare al primario
+$accent-color: #4caf50; // Colore di accento, per evidenziare parti specifiche
+
+// Colori per il testo e gli sfondi
+$text-color: rgba(255, 255, 255, 0.9); // Colore del testo, bianco semi-trasparente
+$header-footer-bg: rgba(0, 0, 0, 0.8); // Sfondo di header e footer, nero semi-trasparente
+$card-bg: rgba(0, 0, 0, 0.7); // Sfondo per elementi come card, timeline e sezioni con informazioni
+
+// Font principale per tutto il sito
+$font-family: 'Poppins, sans-serif';
+
+// ==========================================================================
+// Layout Globale
+// ==========================================================================
+
+html {
+  height: 100%; // Assicura che la pagina occupi sempre tutta l'altezza dello schermo
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; // Previene lo scrolling orizzontale indesiderato
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family; // Applica il font scelto a tutto il testo
+  color: $text-color; // Imposta il colore del testo principale
+
+  // Sfondo con un gradiente animato che cambia nel tempo
+  background: linear-gradient(-45deg, $primary-color, $secondary-color, $accent-color, #42a5f5);
+  background-size: 400% 400%; // Rende il gradiente più dinamico
+  animation: gradientBG 15s ease infinite; // Anima il gradiente continuamente
+
+  min-height: 100vh; // Garantisce che il body copra tutta l'altezza della finestra
+  display: flex;
+  flex-direction: column; // Disposizione verticale degli elementi
+  max-width: 100vw; // Evita che il contenuto si allarghi oltre la larghezza della finestra
+  height: 100%;
+  overflow-x: hidden; // Previene lo scrolling orizzontale
+  padding-top: 65px;
+  /* Mantiene lo spazio corretto sotto la navbar senza creare extra spazio */
+  box-sizing: border-box;
+  /* Evita problemi di dimensionamento */
+}
+
+.container {
+  grid-template-rows: auto 1fr auto; // Struttura a tre righe: header, contenuto centrale, footer
+  height: 100vh; // Occupa tutta l'altezza della finestra
+  flex: 1; // Permette al contenitore di adattarsi allo spazio disponibile
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // Distribuisce gli elementi in modo uniforme tra header, contenuto e footer
+  flex-grow: 1; // Consente al contenuto principale di espandersi per occupare lo spazio rimanente
+}
+
+// ==========================================================================
+// Animazioni
+// ==========================================================================
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%; // Inizio del gradiente
+  }
+
+  50% {
+    background-position: 100% 50%; // Punto intermedio, il gradiente si sposta
+  }
+
+  100% {
+    background-position: 0% 50%; // Torna alla posizione iniziale per ripetere l'animazione
+  }
+}
+
+// ==========================================================================
+// Header e Navigazione
+// ==========================================================================
+
+.nav-links {
+  display: flex; // Dispone gli elementi della navigazione in una riga
+  gap: 2rem; // Aggiunge uno spazio uniforme tra i link
+  list-style: none; // Rimuove i pallini predefiniti della lista
+}
+
+.menu-toggle {
+  display: none; // 🔹 Nasconde il menu a hamburger di default (visibile solo su mobile)
+}
+
+header {
+  background: $header-footer-bg; // Imposta lo sfondo dell'header con il colore semi-trasparente
+  padding: 0.5rem 0; // Riduce il padding sopra e sotto per un design più compatto
+  position: fixed; // Mantiene l'header fisso in alto
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #222; // Sfondo scuro per contrasto
+  height: 60px; // Altezza dell'header
+  display: flex;
+  justify-content: center; // Centra il contenuto orizzontalmente
+  align-items: center; // Centra il contenuto verticalmente
+  z-index: 10000;
+  nav {
+    display: flex;
+    justify-content: center; // Centra il menu di navigazione orizzontalmente
+    padding: 0;
+    margin: 0;
+
+    ul {
+      list-style: none; // Rimuove gli stili predefiniti della lista
+      display: flex; // Dispone i link su una sola riga
+      gap: 2rem; // Distanza uniforme tra i link
+
+      li a {
+        text-decoration: none; // Rimuove la sottolineatura dei link
+        color: $text-color; // Usa il colore del testo principale
+        text-transform: uppercase; // Rende tutto il testo in maiuscolo
+        font-weight: 500; // Imposta un peso medio per migliorare la leggibilità
+        border-bottom: 2px solid transparent; // Aggiunge una linea inferiore invisibile per effetto hover
+        transition: color 0.3s, border-bottom 0.3s; // Transizione fluida del colore e della linea inferiore
+
+        &:hover {
+          color: $accent-color; // Cambia colore al passaggio del mouse
+          border-bottom: 2px solid $accent-color; // Mostra la linea inferiore con il colore di accento
+        }
+      }
+    }
+  }
+}
+
+// ==========================================================================
+// Stili per la Pagina Home
+// ==========================================================================
+
+.index {
+
+  // Sezione Hero - Intestazione principale della homepage
+  .hero {
+    margin: 0 auto; // Centra il contenitore orizzontalmente
+    text-align: center; // Allinea il contenuto al centro
+    padding: 4rem 2rem; // Spaziatura interna per migliorare il layout
+    background: rgba(0, 0, 0, 0.7); // Sfondo scuro semi-trasparente per leggibilità
+    border-radius: 10px; // Arrotonda gli angoli del contenitore
+    margin-bottom: 2rem; // Distanza dalla sezione successiva
+
+    h1 {
+      font-size: 3rem; // Dimensione grande per il titolo principale
+      margin-bottom: 1rem; // Spazio sotto il titolo
+      color: $secondary-color; // Colore evidenziato per il titolo
+      text-transform: uppercase; // Rende il testo tutto in maiuscolo
+    }
+
+    p {
+      font-size: 1.2rem; // Dimensione leggibile per il testo secondario
+      margin-bottom: 2rem; // Distanza tra il testo e i pulsanti CTA
+      color: $text-color; // Colore del testo principale
+    }
+
+    // Sezione Pulsanti di Call-to-Action (CTA)
+    .cta-buttons {
+      display: flex; // Dispone i pulsanti orizzontalmente
+      justify-content: center; // Centra i pulsanti nella sezione
+      gap: 1rem; // Distanza tra i pulsanti
+
+      .btn {
+        text-decoration: none; // Rimuove la sottolineatura dai link
+        padding: 0.75rem 1.5rem; // Dimensione del pulsante per una buona usabilità
+        font-size: 1rem; // Dimensione del testo nel pulsante
+        font-weight: bold; // Testo più evidente
+        border-radius: 5px; // Arrotonda gli angoli del pulsante
+        transition: background 0.3s, transform 0.3s; // Aggiunge transizioni fluide
+
+        // Stile del pulsante primario
+        &.primary {
+          background: $primary-color;
+          color: #ffffff;
+
+          &:hover {
+            background: $accent-color; // Cambia colore al passaggio del mouse
+            transform: scale(1.05); // Effetto leggero di ingrandimento
+          }
+        }
+
+        // Stile del pulsante secondario
+        &.secondary {
+          background: $secondary-color;
+          color: #000000;
+
+          &:hover {
+            background: $primary-color;
+            color: #ffffff;
+            transform: scale(1.05);
+          }
+        }
+
+        // Stile del pulsante terziario (diverso dagli altri)
+        &.tertiary {
+          background: #42a5f5; // Blu per differenziarlo dagli altri
+          color: white;
+
+          &:hover {
+            background: #1e88e5; // Blu più scuro al passaggio del mouse
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+  }
+
+  // Sezione Caratteristiche/Features della homepage
+  .features {
+    margin: 0.5rem auto; // Centra la sezione con un piccolo margine sopra
+    background: rgba(0, 0, 0, 0.7); // Stesso sfondo della sezione "Chi sono" e "Servizi offerti"
+    border-radius: 12px; // Arrotonda gli angoli del contenitore
+    padding: 2rem; // Spaziatura interna per separare il contenuto
+    width: 90%; // Adatta la larghezza alla finestra, ma con margini
+    max-width: 1100px; // Limita la larghezza massima per non allargarsi troppo
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4); // Aggiunge un'ombra per risalto visivo
+
+    h2 {
+      font-size: 2rem; // Dimensione titolo principale della sezione
+      color: $secondary-color; // Usa il colore secondario per evidenziarlo
+      text-align: center; // Centra il titolo
+      margin-bottom: 1rem; // Spazio sotto il titolo
+    }
+
+    // Griglia delle caratteristiche
+    .features-grid {
+      display: grid; // Dispone gli elementi in una griglia
+      grid-template-columns: repeat(3, 1fr); // Tre colonne di uguale larghezza
+      gap: 1.5rem; // Spaziatura tra gli elementi della griglia
+      width: 100%; // Occupa tutto lo spazio disponibile
+      justify-content: center; // Centra la griglia
+
+      // Singolo elemento della griglia
+      .feature-item {
+        background: rgba(0, 0, 0, 0.7); // Stesso sfondo per uniformità grafica
+        padding: 1.5rem; // Spaziatura interna
+        border-radius: 10px; // Angoli arrotondati
+        text-align: center; // Centra il contenuto testuale
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); // Effetto ombra per dare profondità
+        transition: transform 0.3s ease, box-shadow 0.3s ease; // Transizioni fluide per hover
+
+        &:hover {
+          transform: scale(1.05); // Ingrandisce leggermente l'elemento al passaggio del mouse
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); // Ombra più marcata in hover
+        }
+
+        h3 {
+          font-size: 1.5rem; // Dimensione sottotitolo
+          margin-bottom: 1rem; // Spazio sotto il titolo
+          color: $secondary-color; // Colore secondario per evidenziarlo
+        }
+
+        p {
+          font-size: 1.2rem; // Dimensione del testo descrittivo
+          text-align: center; // Centra il testo all'interno della feature
+          color: $text-color; // Usa il colore principale del testo
+          max-width: 80%; // Restringe il testo per leggibilità
+          margin: auto; // Centra il blocco di testo
+        }
+      }
+    }
+  }
+}
+
+
+// ==========================================================================
+// Stili per la Pagina Servizi Offerti
+// ==========================================================================
+
+.servizi {
+  text-align: center; // Centra tutto il contenuto testuale
+  width: 90%; // Imposta una larghezza relativa per adattabilità
+  max-width: 1100px; // Impedisce che la sezione diventi troppo larga
+  margin: auto; // Centra il contenitore nella pagina
+  background: rgba(0, 0, 0, 0.7); // Sfondo scuro semi-trasparente per migliorare la leggibilità
+  padding: 2rem; // Spaziatura interna per una disposizione armoniosa
+  border-radius: 12px; // Arrotonda gli angoli del contenitore
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4); // Effetto ombra per dare profondità
+  display: flex; // Imposta un layout flessibile
+  flex-direction: column; // Organizza gli elementi in verticale
+  justify-content: center; // Centra gli elementi lungo l'asse principale
+  align-items: center; // Centra gli elementi lungo l'asse secondario
+  overflow: hidden; // EVITA ESPANSIONI INUTILI dovute a contenuti fuori dimensione
+
+  h1 {
+    font-size: 2rem; // Dimensione titolo principale della sezione
+    color: $secondary-color; // Colore evidenziato per il titolo
+    margin-bottom: 1rem; // Distanza tra il titolo e gli elementi successivi
+  }
+
+  // Sezione contenente la lista dei servizi offerti
+  .services-list {
+    display: grid; // Dispone gli elementi in una griglia
+    grid-template-columns: repeat(3, 1fr); // Tre colonne di uguale larghezza
+    gap: 1.5rem; // Distanza tra i servizi
+    width: 100%; // Occupa tutto lo spazio disponibile
+    justify-content: center; // CENTRA GLI ELEMENTI all'interno della griglia
+
+    // Singolo elemento della lista dei servizi
+    .service-item {
+      background: rgba(0, 0, 0, 0.7); // Sfondo coerente con il resto della pagina
+      padding: 1.5rem; // LEGGERMENTE PIÙ SPAZIO PER EQUILIBRARE il contenuto
+      border-radius: 10px; // Arrotonda gli angoli per un aspetto moderno
+      text-align: center; // Centra il contenuto testuale
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); // Aggiunge un'ombra per risalto
+      transition: transform 0.3s ease, box-shadow 0.3s ease; // Effetto hover fluido
+
+      display: grid; // Layout a griglia per un migliore posizionamento degli elementi interni
+      grid-template-rows: auto auto 1fr; // STRUTTURA PER ICONA, TITOLO E TESTO
+      align-items: center; // CENTRA VERTICALMENTE il contenuto
+      justify-items: center; // CENTRA ORIZZONTALMENTE il contenuto
+
+      &:hover {
+        transform: scale(1.05); // Effetto leggero di ingrandimento
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); // Ombra più marcata in hover
+      }
+
+      // Icona del servizio
+      .icon {
+        font-size: 2rem; // Dimensione dell'icona per renderla visibile
+        margin-bottom: 0.3rem; // Spazio sotto l'icona
+        color: $secondary-color; // Colore coerente con il titolo
+      }
+
+      // Titolo del servizio
+      h3 {
+        font-size: 1.3rem; // Dimensione del titolo del servizio
+        margin-bottom: 0.3rem; // Distanza tra il titolo e il testo
+        color: $secondary-color; // Colore evidenziato per il titolo
+      }
+
+      // Descrizione del servizio
+      p {
+        font-size: 1.1rem; // Dimensione del testo descrittivo
+        color: $text-color; // Usa il colore principale del testo
+        margin: 0; // RIMOSSO QUALSIASI MARGINE SUPERIORE E INFERIORE per allineamento preciso
+        padding: 0.5rem; // AGGIUNTO UN PO' DI PADDING PER EQUILIBRARE l'aspetto
+        max-width: 80%; // Limita la larghezza massima del testo per leggibilità
+        text-align: center; // Centra il testo all'interno della card
+      }
+    }
+  }
+}
+
+
+// ==========================================================================
+// Stili per la Pagina Chi Sono
+// ==========================================================================
+
+.chi-sono {
+  text-align: center; // Centra il contenuto testuale
+  width: 90%; // Imposta una larghezza relativa per adattabilità
+  max-width: 1000px; // Limita la larghezza massima per mantenere leggibilità
+  margin: auto; // Centra il contenitore nella pagina
+  background: rgba(0, 0, 0, 0.7); // Sfondo semi-trasparente per migliorare la leggibilità
+  padding: 2rem; // Spaziatura interna per separare il contenuto
+  border-radius: 12px; // Arrotonda gli angoli per un aspetto moderno
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4); // Effetto ombra per dare profondità
+  display: flex; // Layout flessibile
+  flex-direction: column; // Disposizione verticale
+  justify-content: center; // Centra il contenuto principale
+  align-items: center; // Allinea gli elementi al centro orizzontalmente
+
+  // Sezioni principali: About, Skills, Timeline
+  .about,
+  .skills,
+  .timeline {
+    width: 100%; // Occupa tutta la larghezza disponibile
+    text-align: center; // Centra il contenuto testuale
+    margin-bottom: 2rem; // SPAZIO PER SEPARARE MEGLIO LE SEZIONI
+
+    h1,
+    h2 {
+      font-size: 2rem; // Dimensione uniforme per i titoli delle sezioni
+      color: $secondary-color; // Colore di evidenziazione per i titoli
+      margin-bottom: 1rem; // Distanza tra il titolo e il contenuto sottostante
+    }
+
+    p {
+      font-size: 1.2rem; // Dimensione del testo descrittivo
+      color: white; // Testo bianco per contrasto
+      line-height: 1.5; // Migliora la leggibilità
+      width: 80%; // Restringe la larghezza del testo per una lettura più confortevole
+      margin: auto; // Centra il blocco di testo
+    }
+
+    // ======================================================================
+    // Sezione Competenze
+    // ======================================================================
+    .skills-grid {
+      display: flex; // CAMBIATO DA GRID A FLEX PER UNA SOLA RIGA ORIZZONTALE
+      flex-wrap: wrap; // EVITA PROBLEMI SU SCHERMI PICCOLI
+      justify-content: center; // CENTRA TUTTO PERFETTAMENTE
+      gap: 1.5rem; // Spaziatura tra gli elementi della griglia
+      width: 100%;
+
+      .skill-item {
+        background: $card-bg; // Sfondo uniforme per le card delle competenze
+        padding: 1.5rem; // Spaziatura interna per armonia visiva
+        border-radius: 10px; // Angoli arrotondati per design moderno
+        text-align: center; // Centra il contenuto testuale
+        width: 18%; // OGNI BLOCCO OCCUPA IL 18% PER FAR STARE TUTTO IN UNA RIGA
+        min-width: 150px; // EVITA CHE SI STRINGA TROPPO SU SCHERMI PICCOLI
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); // Ombra per dare profondità
+        transition: transform 0.3s ease, box-shadow 0.3s ease; // Transizione fluida in hover
+
+        &:hover {
+          transform: scale(1.05); // Effetto leggero di ingrandimento
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); // Ombra più marcata in hover
+        }
+
+        h3 {
+          font-size: 1.5rem; // Dimensione titolo competenza
+          margin-bottom: 1rem; // Spazio sotto il titolo
+          color: $secondary-color; // Stesso colore delle scritte delle competenze
+        }
+
+        p {
+          font-size: 1rem; // Dimensione testo competenza
+          color: $text-color; // Usa il colore principale del testo
+        }
+      }
+    }
+
+    // ======================================================================
+    // Sezione Timeline
+    // ======================================================================
+    .timeline-container {
+      display: grid; // Dispone gli eventi della timeline in una griglia
+      grid-template-columns: repeat(2, 1fr); // Due colonne
+      grid-template-rows: auto auto; // Due righe
+      gap: 2rem; // Distanza tra gli elementi della timeline
+
+      .timeline-item {
+        background: $card-bg; // Sfondo uniforme per la timeline
+        padding: 1.5rem; // Spaziatura interna
+        border-radius: 10px; // Angoli arrotondati
+        text-align: center; // Centra il contenuto testuale
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); // Ombra per profondità
+        transition: transform 0.3s ease; // Transizione fluida in hover
+        color: $text-color; // Testo con colore principale
+
+        &:hover {
+          transform: scale(1.05); // Ingrandisce leggermente il blocco in hover
+        }
+
+        h3 {
+          font-size: 1.5rem; // Dimensione titolo evento
+          margin-bottom: 1rem; // Spazio sotto il titolo
+          color: $secondary-color; // Stesso colore delle scritte delle competenze
+        }
+
+        p {
+          font-size: 1rem; // Dimensione del testo descrittivo
+        }
+
+        // Posizionamento speciale per un evento particolare
+        &.special {
+          grid-column: 1 / -1; // Occupa tutta la larghezza della griglia
+          margin: 0 auto; // Centra l'elemento special
+        }
+      }
+    }
+  }
+}
+
+
+// ==========================================================================
+// Stili per la Pagina Lavori
+// ==========================================================================
+
+.lavori {
+  background: rgba(0, 0, 0, 0.7); // STESSO SFONDO DELLE ALTRE PAGINE per coerenza visiva
+  border-radius: 12px; // Arrotonda gli angoli del contenitore principale
+  padding: 2rem; // Spaziatura interna per un aspetto armonioso
+  width: 90%; // Adatta la larghezza alla finestra senza essere troppo grande
+  max-width: 1100px; // Limita la larghezza massima per una migliore leggibilità
+  margin: auto; // Centra il contenitore nella pagina
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4); // Aggiunge un'ombra per effetto tridimensionale
+  text-align: center; // Centra il contenuto testuale
+  margin-top: 2cap; // Spazio superiore per separare dalla sezione precedente
+
+  h1 {
+    font-size: 2rem; // Dimensione titolo principale della sezione
+    margin-bottom: 1rem; // Spazio sotto il titolo
+    color: $secondary-color; // Colore principale per i titoli, per maggiore evidenza
+  }
+
+  p {
+    font-size: 1.2rem; // Dimensione testo descrittivo
+    max-width: 80%; // Limita la larghezza del paragrafo per leggibilità
+    margin: auto; // Centra il blocco di testo
+    color: $text-color; // Testo leggibile su qualsiasi sfondo
+  }
+
+  // ======================================================================
+  // Griglia dei lavori
+  // ======================================================================
+  .lavori-grid {
+    display: grid; // Dispone gli elementi in una griglia
+    grid-template-columns: repeat(3, 1fr); // Tre colonne di uguale larghezza
+    gap: 1.5rem; // Distanza tra i lavori
+    width: 100%; // Occupa tutto lo spazio disponibile
+    justify-content: center; // Centra la griglia
+
+    a {
+      text-decoration: none; // Rimuove lo stile predefinito del link
+      color: inherit; // Mantiene il colore del testo originale
+    }
+
+    // Singolo elemento della lista lavori
+    .lavoro-item {
+      background: rgba(0, 0, 0, 0.7); // Sfondo uniforme per tutti i lavori
+      padding: 1.5rem; // Spaziatura interna per armonia visiva
+      border-radius: 10px; // Angoli arrotondati per un design moderno
+      text-align: center; // Centra il contenuto testuale
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); // Aggiunge un'ombra per profondità
+      transition: transform 0.3s ease, box-shadow 0.3s ease; // Transizione fluida per effetto hover
+      cursor: pointer; // Indica che l'intero div è cliccabile
+
+      &:hover {
+        transform: scale(1.05); // Ingrandisce leggermente il blocco in hover
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); // Ombra più intensa al passaggio del mouse
+      }
+
+      // Immagine anteprima del lavoro
+      img {
+        width: 50%; // Imposta la dimensione dell'immagine al 50% della larghezza del contenitore
+        height: auto; // Mantiene le proporzioni originali
+        border-radius: 10px; // Arrotonda gli angoli per uniformità con il resto del design
+        margin-bottom: 1rem; // Spazio sotto l'immagine per separarla dal titolo
+      }
+
+      // Titolo del lavoro
+      h3 {
+        font-size: 1.5rem; // Dimensione titolo lavoro
+        color: $secondary-color; // Colore per i titoli dei lavori per coerenza grafica
+      }
+    }
+  }
+}
+
+
+// ==========================================================================
+// Stili per la Pagina Lavoro (Dettaglio di un progetto)
+// ==========================================================================
+
+main {
+  flex-grow: 1; // Permette al main di espandersi e occupare tutto lo spazio disponibile
+  padding: 0; // Riduce il padding verticale al minimo
+  margin: 0; // Rimuove ogni margine esterno
+  display: flex;
+  flex-direction: column; // Disposizione verticale degli elementi
+  justify-content: center; // Mantiene il contenuto centrato verticalmente se è poco
+  align-items: center; // Centra il contenuto orizzontalmente
+  padding: 2rem; // Padding minimo per garantire leggibilità e respiro tra gli elementi
+  width: 100%;
+  padding-top: 0.5rem; // DIMINUITO LO SPAZIO SOLO SOPRA per maggiore compattezza
+  padding-bottom: 0.5rem; // DIMINUITO LO SPAZIO SOTTO IL FORM per ottimizzare lo spazio
+}
+
+// ==========================================================================
+// Sezione principale con i dettagli del lavoro/progetto
+// ==========================================================================
+
+.lavoro {
+  text-align: center; // Centra tutto il contenuto testuale
+  padding: 2rem; // Spaziatura interna per separare meglio i contenuti
+
+  h1 {
+    font-size: 2.5rem; // Titolo principale grande per evidenziare il progetto
+    margin-bottom: 1rem; // Spazio sotto il titolo
+    color: $secondary-color; // Colore principale per i titoli
+  }
+
+  .descrizione {
+    font-size: 1.2rem; // Dimensione testo descrittivo
+    margin-bottom: 2rem; // Distanza tra il testo descrittivo e il contenuto successivo
+    color: $text-color; // Colore del testo per leggibilità
+  }
+
+  // ======================================================================
+  // Sezione dettagliata del progetto
+  // ======================================================================
+  .lavoro-dettagli {
+    display: flex; // Dispone il contenuto in una riga con immagine e informazioni
+    align-items: center; // Allinea verticalmente gli elementi
+    justify-content: center; // Centra gli elementi orizzontalmente
+    gap: 2rem; // Spaziatura tra immagine e testo
+    background: $card-bg; // Sfondo coerente con le altre sezioni
+    padding: 2rem; // Spaziatura interna per migliorare la leggibilità
+    border-radius: 10px; // Angoli arrotondati per un design moderno
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); // Ombra per dare profondità
+
+    // Immagine del progetto
+    img {
+      width: 40%; // Occupa il 40% della larghezza disponibile
+      height: auto; // Mantiene le proporzioni originali
+      border-radius: 10px; // Arrotonda gli angoli dell'immagine
+    }
+
+    // Contenitore delle informazioni del progetto
+    .info {
+      text-align: left; // Allinea il testo a sinistra per una migliore leggibilità
+      max-width: 50%; // Limita la larghezza massima per non allargarsi troppo
+
+      h2 {
+        font-size: 2rem; // Dimensione titolo sezione
+        color: $secondary-color; // Usa il colore secondario per evidenziare
+        margin-bottom: 1rem; // Distanza tra il titolo e la lista
+      }
+
+      ul {
+        list-style: none; // Rimuove i pallini predefiniti della lista
+        padding: 0; // Rimuove eventuali padding di default
+
+        li {
+          font-size: 1.1rem; // Dimensione leggibile della lista
+          margin-bottom: 0.5rem; // Spazio tra gli elementi della lista
+          color: $text-color; // Colore coerente con il resto del testo
+        }
+      }
+    }
+  }
+
+  // ======================================================================
+  // Sezione pulsante Call-To-Action (CTA)
+  // ======================================================================
+  .cta {
+    margin-top: 2rem; // Spazio sopra il pulsante per separarlo dai dettagli
+
+    .btn {
+      text-decoration: none; // Rimuove la sottolineatura dei link
+      padding: 0.75rem 1.5rem; // Dimensione del pulsante per una buona usabilità
+      font-size: 1rem; // Dimensione del testo nel pulsante
+      font-weight: bold; // Testo in grassetto per maggiore enfasi
+      border-radius: 5px; // Arrotonda gli angoli del pulsante
+      transition: background 0.3s, transform 0.3s; // Effetti di transizione per un'animazione fluida
+
+      // Stile del pulsante primario
+      &.primary {
+        background: $primary-color; // Colore primario come sfondo
+        color: #ffffff; // Testo bianco per contrasto
+
+        &:hover {
+          background: $accent-color; // Cambia colore al passaggio del mouse
+          transform: scale(1.05); // Effetto leggero di ingrandimento
+        }
+      }
+    }
+  }
+}
+
+
+// ==========================================================================
+// Sezione Contattami
+// ==========================================================================
+
+.contatti {
+  text-align: center; // Centra il testo all'interno della sezione
+  width: 100%; // Occupa tutta la larghezza disponibile
+  max-width: 700px; // Limita la larghezza massima per una buona leggibilità
+  height: auto; // Altezza adattabile al contenuto
+  margin: auto; // Centra la sezione nella pagina
+  background: rgba(0, 0, 0, 0.7); // Sfondo semi-trasparente per un design elegante
+  padding: 2rem; // Spaziatura interna per separare gli elementi
+  border-radius: 12px; // Arrotonda gli angoli per un design moderno
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4); // Aggiunge un'ombra per profondità visiva
+  display: flex; // Usa Flexbox per gestire il layout
+  flex-direction: column; // Disposizione verticale degli elementi
+  justify-content: center; // Centra gli elementi verticalmente
+  align-items: center; // Allinea gli elementi orizzontalmente
+  margin-top: 2rem; // Distanza dall'elemento superiore per un migliore posizionamento
+}
+
+// Titolo e paragrafo della sezione contatti
+.contatti h1,
+.contatti p {
+  text-align: center; // Assicura che il testo sia centrato
+}
+
+h1 {
+  font-size: 2rem; // Dimensione del titolo principale
+  color: $secondary-color; // Colore evidenziato per il titolo
+}
+
+p {
+  font-size: 1.2rem; // Dimensione del testo descrittivo
+  margin-bottom: 1.5rem; // Distanza dal paragrafo successivo
+}
+
+// ==========================================================================
+// Form Contatti
+// ==========================================================================
+
+form {
+  display: flex; // Layout flessibile per allineare gli input
+  flex-direction: column; // Disposizione verticale degli elementi
+  align-items: center; // Allinea gli elementi al centro
+  gap: 1rem; // Spaziatura tra i campi del form
+  width: 100%; // Occupa tutta la larghezza disponibile
+  max-width: 600px; // Limita la larghezza massima per non risultare troppo esteso
+}
+
+// Righe del form (es. Nome e Cognome affiancati)
+.form-row {
+  display: flex; // Allinea gli input su una stessa riga
+  gap: 2rem; // Spaziatura tra gli input
+  width: 100%; // Occupa tutta la larghezza disponibile
+}
+
+// Contenitore per ogni input
+.input-group {
+  flex: 1; // Permette agli input di adattarsi alla larghezza disponibile
+  text-align: left; // Allinea le etichette dei campi a sinistra
+  width: 100%; // Occupa tutta la larghezza disponibile
+}
+
+// Stile per le etichette dei campi
+label {
+  font-size: 1.2rem; // Dimensione testo etichetta
+  font-weight: bold; // Testo in grassetto per maggiore visibilità
+  color: white; // Colore del testo
+}
+
+.error {
+  color: red;
+  font-size: 0.9em;
+  display: block;
+  margin-top: 5px;
+}
+
+.success {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+// ==========================================================================
+// Stili per Input, Textarea e Select
+// ==========================================================================
+
+input,
+textarea,
+select {
+  width: 100%; // Occupa tutta la larghezza del contenitore
+  padding: 0.8em; // Spaziatura interna per un aspetto più leggibile
+  margin-top: 0.3rem; // Distanza sopra il campo input
+  border: none; // Rimuove il bordo predefinito
+  border-radius: 6px; // Angoli arrotondati per un design moderno
+  font-size: 1.2rem; // Dimensione testo negli input
+  background: rgba(255, 255, 255, 0.2); // Sfondo semi-trasparente
+  color: white; // Testo bianco per contrasto
+  transition: all 0.3s ease; // Transizione fluida per effetti di interazione
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2); // Effetto ombra interna per profondità
+}
+
+// Stile per il menu a tendina
+select {
+  width: 105%; // Piccolo extra per allineare perfettamente il campo con gli input
+  appearance: none; // Rimuove lo stile predefinito del browser
+}
+
+// Effetto focus sugli input
+input:focus,
+textarea:focus,
+select:focus {
+  border: 2px solid $secondary-color; // Evidenzia il campo attivo con il colore secondario
+  background: rgba(255, 255, 255, 0.3); // Sfondo leggermente più chiaro per feedback visivo
+  outline: none; // Rimuove il bordo predefinito del browser
+}
+
+select:focus {
+  background-color: #222 !important; /* Sfondo scuro */
+  color: white !important; /* Testo bianco */
+  border: 1px solid #555 !important; /* Bordo visibile */
+}
+
+// Stile specifico per la textarea
+textarea {
+  height: 100px; // Altezza predefinita per il campo messaggio
+  resize: vertical; // Permette all'utente di ridimensionare verticalmente
+}
+
+// ==========================================================================
+// Stili per il Pulsante di Invio
+// ==========================================================================
+
+button {
+  background: #ff6f61; // Colore primario del pulsante
+  color: white; // Testo bianco per contrasto
+  font-size: 1.2rem; // Dimensione testo
+  padding: 0.7rem; // Spaziatura interna per un aspetto migliore
+  border: none; // Rimuove il bordo predefinito
+  border-radius: 6px; // Angoli arrotondati
+  cursor: pointer; // Indica che il pulsante è cliccabile
+  transition: background 0.3s, transform 0.2s; // Transizione fluida
+
+  width: 100%; // Occupa tutta la larghezza disponibile
+}
+
+// Effetto hover sul pulsante
+button:hover {
+  background: #4caf50; // Cambia colore al passaggio del mouse
+  transform: scale(1.05); // Effetto leggero di ingrandimento
+}
+
+
+@media (max-width: 768px) {
+  body, html {
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #222;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    z-index: 10000;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .menu-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    background: #222;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 15px;
+    top: 20%; /* Alzato ancora di più */
+    transform: translateY(-50%);
+    z-index: 10000;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.95);
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    padding-top: 100px;
+    text-align: center;
+    z-index: 9999;
+  }
+
+  #menu-toggle:checked ~ .nav-links {
+    display: flex;
+  }
+
+  .nav-links li {
+    list-style: none;
+    margin: 1.5rem 0;
+  }
+
+  .nav-links a {
+    font-size: 1.8rem;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 1rem;
+  }
+
+  .nav-links a:hover {
+    color: yellow;
+  }
+}
+
+
+
+// ==========================================================================
+// Media query per dispositivi mobili (max-width: 425px)
+// ==========================================================================
+
+@media (max-width: 425px) {
+
+  //  Impostazioni di base per HTML e Body
+  html,
+  body {
+    height: auto !important; // Permette alla pagina di crescere in altezza
+    min-height: 100vh !important; // Assicura che la pagina occupi sempre l'intera altezza della finestra
+    overflow-y: auto !important; // Abilita lo scrolling verticale per i contenuti più lunghi
+  }
+
+  //  Ottimizzazione layout index
+  .index {
+    max-width: 90%; // Riduce la larghezza per adattarsi agli schermi piccoli
+    margin: 0 auto !important; // Centra il contenitore
+    transform: translateX(-3.5%); // Sposta leggermente a destra per migliorare l'allineamento
+  }
+
+
+
+  // ======================================================================
+  //  LE MIE COMPETENZE: Disposizione verticale
+  // ======================================================================
+  .skills-grid {
+    display: flex;
+    flex-direction: column; // Disposizione verticale
+    align-items: center;
+    gap: 1.5rem; // Spazio tra le skill
+  }
+
+  .skill-item {
+    width: 90%; // Evita che siano troppo strette
+    max-width: 400px;
+  }
+
+  // ======================================================================
+  //  TIMELINE: Migliore distribuzione in colonna
+  // ======================================================================
+  .timeline-container {
+    display: flex;
+    flex-direction: column; // Disposizione verticale
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .timeline-item {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  // ======================================================================
+  //  NAVBAR - Spaziatura migliorata per schermi piccoli
+  // ======================================================================
+  header nav ul {
+    display: flex;
+    flex-direction: column; // Disposizione verticale
+    text-align: center;
+    padding: 0;
+    gap: 0.3rem;
+  }
+
+  header nav ul li a {
+    font-size: 0.8rem; // Riduce leggermente il testo per una migliore adattabilità
+    padding: 0.4rem;
+  }
+
+  // ======================================================================
+  //  HERO SECTION - Adattata per schermi piccoli
+  // ======================================================================
+  .index .hero {
+    padding: 1rem;
+    margin: 0 auto;
+    max-width: 90%;
+    text-align: center;
+
+    h1 {
+      font-size: 1.5rem; // Riduce leggermente il titolo
+      line-height: 1.3;
+    }
+
+    p {
+      font-size: 1rem; // Adatta il testo alla dimensione del display
+    }
+
+    .cta-buttons {
+      flex-direction: column; // Disposizione verticale per i pulsanti
+      align-items: center;
+      gap: 0.6rem;
+      width: 100%;
+    }
+
+    .btn {
+      width: 85%; // Riduce la larghezza dei pulsanti
+      font-size: 0.9rem;
+      padding: 0.6rem 1rem;
+    }
+  }
+
+  // ======================================================================
+  //  SEZIONE FEATURES - Layout verticale per migliore leggibilità
+  // ======================================================================
+  .features {
+    width: 90% !important;
+    padding: 1rem;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 0 !important;
+    overflow: hidden !important; // 🔹 Evita scrolling laterale
+    transform: translateX(-2%); // Sposta leggermente a destra
+  }
+
+  .features h2 {
+    font-size: 1.3rem; // Riduce leggermente la dimensione del titolo
+    margin-bottom: 0.5rem;
+  }
+
+  .features-grid {
+    display: flex !important;
+    flex-direction: column !important; // 🔹 Forza la disposizione verticale
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 95%;
+    margin: 0 auto !important;
+  }
+
+  .feature-item {
+    width: 90% !important; // 🔹 Evita sovrapposizioni
+    max-width: 280px !important;
+    padding: 1.2rem;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto !important; // 🔹 Assicura spazio uniforme su entrambi i lati
+    transform: translateX(-3%); // Sposta leggermente a destra
+  }
+
+  .feature-item h3 {
+    font-size: 1.2rem;
+    text-align: center;
+    word-wrap: break-word; // Evita che il testo esca dai limiti
+  }
+
+  .feature-item p {
+    font-size: 1rem; // Imposta la dimensione del testo per una buona leggibilità
+    width: 90%; // Evita che il testo si estenda oltre i bordi
+    margin: auto; // Centra il testo orizzontalmente
+    text-align: center; // Allinea il testo al centro
+  }
+
+  // **CENTRA INTERO CONTENUTO**
+  .chi-sono {
+    display: flex; // Usa Flexbox per gestire l'allineamento
+    flex-direction: column; // Dispone gli elementi in verticale
+    align-items: center; // **Allinea tutto al centro orizzontalmente**
+    justify-content: center; // **Mantiene centrato verticalmente**
+    width: 100%; // Occupa tutta la larghezza disponibile
+    margin: 0 auto; // **Forza il centraggio orizzontale**
+    padding: 1rem; // Aggiunge spazio interno per evitare che i contenuti siano troppo vicini ai bordi
+    text-align: center; // **Tutto il testo centrato**
+    transform: translateX(-3%); // Sposta leggermente a destra per un miglior allineamento visivo
+  }
+
+  // **CENTRA SEZIONI**
+  .about,
+  .skills,
+  .timeline {
+    display: flex; // Usa Flexbox per l'allineamento
+    flex-direction: column; // Disposizione verticale per ottimizzare lo spazio su mobile
+    align-items: center; // **Forza il centraggio degli elementi interni**
+    justify-content: center; // Centra il contenuto all'interno
+    width: 100%; // Occupa tutta la larghezza disponibile
+    max-width: 300px; // **Evita problemi di allineamento su mobile**
+    margin: 0 auto; // Centra il contenitore nella pagina
+    text-align: center; // Allinea il testo al centro
+  }
+
+  // **CENTRA I BLOCCHI DELLE COMPETENZE**
+  .skills-grid {
+    display: flex; // Usa Flexbox per gestire la disposizione
+    flex-direction: column; // Disposizione verticale per migliorare la leggibilità su mobile
+    align-items: center; // Centra gli elementi della griglia
+    justify-content: center; // Centra il contenuto della sezione
+    gap: 1.5rem; // Aggiunge spazio tra gli elementi
+    width: 100%; // Occupa tutta la larghezza disponibile
+    transform: translateX(-6%); // Sposta leggermente a destra per migliorare l'allineamento
+  }
+
+  .skill-item {
+    width: 100% !important; // Occupa tutta la larghezza disponibile
+    max-width: 280px; // **Assicura che le competenze abbiano la stessa larghezza**
+    text-align: center; // Centra il contenuto testuale
+    padding: 1rem; // Aggiunge spazio interno per separare gli elementi
+  }
+
+  // **TIMELINE - Adattata per dispositivi mobili**
+  .timeline-container {
+    display: flex !important; // Usa Flexbox per gestire la disposizione
+    flex-direction: column !important; // **Forza la disposizione in colonna**
+    align-items: center !important; // **Centra gli elementi**
+    justify-content: center !important; // Centra verticalmente
+    gap: 1.5rem; // Aggiunge spazio tra i box della timeline
+    width: 100%; // Occupa tutta la larghezza disponibile
+  }
+
+  .timeline-item {
+    width: 90% !important; // **Forza la larghezza per adattarsi al mobile**
+    max-width: 300px; // **Limita la larghezza massima per evitare che sia troppo larga**
+    text-align: center; // Allinea il testo al centro
+    padding: 1rem; // Aggiunge spazio interno per migliorare la leggibilità
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); // Aggiunge ombreggiatura per estetica
+    transform: translateX(-2%); // Sposta leggermente a destra per mantenere allineamento
+
+    &.special {
+      transform: translateX(-4.5%); // Sposta leggermente a destra per migliorare l'allineamento
+    }
+  }
+
+  // **RIDUCE LA DIMENSIONE DEI TITOLI SU MOBILE**
+  h1,
+  h2 {
+    font-size: 1.5rem; // Riduce leggermente la grandezza dei titoli per ottimizzare lo spazio
+  }
+
+  p {
+    font-size: 1rem; // Rende il testo più leggibile senza occupare troppo spazio
+  }
+
+  // **CENTRA E ADATTA TUTTA LA PAGINA SERVIZI**
+  .servizi {
+    display: flex !important; // Usa Flexbox per organizzare gli elementi
+    flex-direction: column !important; // Disposizione verticale per ottimizzare lo spazio
+    align-items: center !important; // **Centra il contenuto**
+    width: 100% !important; // Occupa tutta la larghezza disponibile
+    padding: 2rem 1rem !important; // Aggiunge spazio interno per migliorare l'impaginazione
+    box-sizing: border-box !important; // Evita problemi di ridimensionamento
+    overflow: visible !important; // **Assicura che tutti gli elementi siano visibili**
+  }
+
+  // **FORZA LA DISPOSIZIONE VERTICALE DELLA LISTA DEI SERVIZI**
+  .services-list {
+    display: flex !important; // Usa Flexbox per la disposizione
+    flex-direction: column !important; // **Forza la disposizione verticale**
+    align-items: center !important; // **Centra gli elementi della lista**
+    width: 100% !important; // Occupa tutta la larghezza disponibile
+    gap: 1.5rem !important; // Aggiunge spazio tra gli elementi della lista
+    padding-bottom: 5rem !important; // **Aggiunge spazio extra per lo scroll**
+  }
+
+  // ==========================================================================
+  // Stili per gli elementi della sezione Servizi
+  // ==========================================================================
+
+  .service-item {
+    width: 90% !important; // Adatta la larghezza per evitare che l'elemento sia troppo grande
+    max-width: 320px !important; // Imposta una larghezza massima per un layout più uniforme
+    text-align: center !important; // Centra il testo all'interno dell'elemento
+    padding: 1.5rem !important; // Aggiunge spazio interno per migliorare la leggibilità
+    border-radius: 10px !important; // Arrotonda gli angoli per un design più moderno
+    min-height: 200px !important; // Imposta un'altezza minima per mantenere coerenza visiva
+    display: flex !important;
+    flex-direction: column !important; // Dispone gli elementi all'interno in verticale
+    justify-content: center !important; // Centra verticalmente il contenuto
+  }
+
+  // Testo all'interno dei servizi
+  .service-item p {
+    font-size: 1rem !important; // Imposta una dimensione del testo leggibile
+    line-height: 1.4 !important; // Aggiunge spazio tra le righe per migliorare la leggibilità
+    padding: 0 10px !important; // Aggiunge spazio laterale per non far toccare il testo ai bordi
+  }
+
+  // ==========================================================================
+  // Stili per le icone
+  // ==========================================================================
+
+  // **CENTRA LE ICONE**
+  .icon {
+    font-size: 2rem; // Ingrandisce l'icona per renderla ben visibile
+    margin-bottom: 0.5rem; // Aggiunge spazio sotto l'icona per separarla dal testo
+    display: block; // Assicura che l'icona venga trattata come un blocco indipendente
+    text-align: center; // Centra l'icona all'interno del contenitore
+  }
+
+  // **ALLINEA TESTO E TITOLI AL CENTRO**
+  h3 {
+    font-size: 1.3rem; // Imposta la dimensione del titolo
+    margin-bottom: 0.5rem; // Aggiunge spazio sotto il titolo
+    text-align: center; // Centra il titolo
+  }
+
+  p {
+    font-size: 1rem; // Imposta la dimensione del testo
+    text-align: center; // Centra il testo
+    max-width: 90%; // Impedisce che il testo si allarghi troppo
+    margin: 0 auto; // Centra il testo all'interno del contenitore
+  }
+
+  // ==========================================================================
+  // Sezione Lavori (Portfolio)
+  // ==========================================================================
+
+  .lavori {
+    display: flex !important;
+    flex-direction: column !important; // Dispone i lavori in verticale per schermi piccoli
+    align-items: center !important; // Centra gli elementi
+    width: 100% !important; // Occupa tutta la larghezza disponibile
+    padding: 2rem 1rem !important; // Aggiunge spazio interno per leggibilità
+    box-sizing: border-box !important; // Evita che il padding influenzi la larghezza
+    overflow: visible !important; // Assicura che tutti i contenuti siano visibili
+    text-align: center !important; // Centra il testo
+    padding-left: 5%; // Riduce lo spazio a sinistra per migliorare l'allineamento
+  }
+
+  // Griglia dei lavori
+  .lavori-grid {
+    display: flex !important;
+    flex-direction: column !important; // Disposizione verticale per i lavori
+    align-items: center !important; // Centra gli elementi della griglia
+    gap: 1.5rem !important; // Aggiunge spazio tra i lavori
+    width: 95% !important; // Imposta la larghezza relativa per adattabilità
+    padding-bottom: 5rem !important; // Aggiunge spazio extra per lo scroll
+    text-align: center;
+  }
+
+  // Singolo elemento della griglia lavori
+  .lavoro-item {
+    width: 90% !important; // Imposta la larghezza relativa per adattarsi agli schermi piccoli
+    max-width: 320px !important; // Imposta una larghezza massima per un layout uniforme
+    text-align: center !important; // Centra il contenuto
+    padding: 1.5rem !important; // Aggiunge spazio interno per migliorare la leggibilità
+    border-radius: 10px !important; // Arrotonda gli angoli per un design moderno
+    min-height: 200px !important; // Imposta un'altezza minima per uniformità
+    display: flex !important;
+    flex-direction: column !important; // Dispone gli elementi all'interno in verticale
+    justify-content: center !important; // Centra verticalmente il contenuto
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4) !important; // Aggiunge un'ombra per profondità
+    margin: 0 auto; // Centra l'elemento nella griglia
+    transform: translateX(-3%); // Sposta leggermente a destra per migliorare l'allineamento
+  }
+
+  // Immagini all'interno dei lavori
+  .lavoro-item img {
+    width: 80% !important; // Riduce la dimensione dell'immagine per adattarsi meglio
+    height: auto !important; // Mantiene le proporzioni originali
+    margin: auto !important; // Centra l'immagine all'interno del contenitore
+  }
+
+  // ==========================================================================
+  // Stili per la sezione lavoro singolo
+  // ==========================================================================
+
+  .lavoro {
+    width: 100%; // Occupa tutta la larghezza disponibile
+    padding: 1rem; // Aggiunge spazio interno
+    text-align: center; // Centra il testo
+  }
+
+  // Contenitore dei dettagli del lavoro
+  .lavoro-dettagli {
+    display: flex;
+    flex-direction: column; // Disposizione verticale per migliore leggibilità
+    align-items: flex-start; // Allinea il contenuto a sinistra
+    width: 90%; // Imposta la larghezza per evitare layout troppo stretti
+    margin-left: 0; // Elimina margini extra per migliorare l'allineamento
+    padding: 1rem; // Aggiunge spazio interno
+  }
+
+  // Titolo del lavoro
+  .lavoro h1 {
+    font-size: 1.8rem; // Imposta una dimensione leggibile per il titolo
+    text-align: left; // Sposta il titolo a sinistra
+    width: 100%;
+    margin-left: 0; // Elimina margini extra
+  }
+
+  // Immagini dei dettagli del lavoro
+  .lavoro-dettagli img {
+    width: 90%; // Adatta l'immagine alla larghezza dello schermo
+    height: auto;
+    max-width: 250px; // Imposta una dimensione massima per evitare immagini troppo grandi
+  }
+
+  // Testo dei dettagli del lavoro
+  .lavoro-dettagli p {
+    font-size: 1.2rem; // Imposta una dimensione leggibile per il testo
+    max-width: 90%; // Limita la larghezza per evitare layout troppo estesi
+    text-align: left; // Allinea il testo a sinistra
+    margin-left: 0; // Elimina margini extra
+  }
+
+  // ==========================================================================
+  // Sezione Call-To-Action (CTA)
+  // ==========================================================================
+
+  .cta {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; // Sposta il pulsante a sinistra
+  }
+
+  // Stili per il pulsante CTA
+  .cta .btn {
+    width: 80%; // Imposta la larghezza del pulsante per adattabilità
+    font-size: 1rem; // Imposta la dimensione del testo
+    text-align: center;
+    margin-left: 0; // Elimina margini extra
+    transform: translateX(-2.5%); // Sposta leggermente a destra per allineamento migliore
+  }
+
+
+  .contatti {
+    width: 95%; // Adatta la larghezza al 95% della viewport per un migliore adattamento ai dispositivi mobili
+    max-width: 320px; // Limita la larghezza massima per evitare che il contenuto diventi troppo largo
+    padding: 1rem; // Spaziatura interna per distanziare gli elementi
+    margin: auto; // Centra il contenitore orizzontalmente
+    display: flex; // Usa Flexbox per organizzare gli elementi in verticale
+    flex-direction: column; // Disposizione degli elementi in colonna
+    align-items: center; // Centra gli elementi lungo l'asse orizzontale
+    text-align: center; // Centra il testo all'interno della sezione
+    transform: translateX(-2.5%); // Sposta leggermente il contenitore verso destra
+  }
+
+  .contatti h1 {
+    font-size: 3rem; // Dimensione grande del titolo per evidenziarlo
+    margin-bottom: 3rem; // Spazio sotto il titolo per separarlo dagli altri elementi
+  }
+
+  .contatti p {
+    font-size: 1.5rem; // Testo più grande per leggibilità
+    width: 100%; // Occupa tutta la larghezza disponibile
+    margin-bottom: 2rem; // Spazio sotto il paragrafo per separarlo dagli altri elementi
+  }
+
+  // ==========================================================================
+  // Stili per il Form di Contatto
+  // ==========================================================================
+
+  form {
+    width: 100%; // Occupa tutta la larghezza disponibile
+    display: flex; // Layout flessibile
+    flex-direction: column; // Disposizione verticale degli input
+    gap: 0.8rem; // Distanza tra gli elementi del form
+  }
+
+  .form-row {
+    flex-direction: column; // Disposizione verticale per i gruppi di input
+    gap: 0.8rem; // Spazio tra gli elementi
+    width: 100%; // Occupa tutta la larghezza disponibile
+  }
+
+  .input-group {
+    width: 100%; // Ogni input-group occupa tutta la larghezza disponibile
+    text-align: left; // Allinea il testo a sinistra per le etichette
+  }
+
+  // ==========================================================================
+  // Stili per Input, Textarea e Select
+  // ==========================================================================
+
+  input,
+  textarea {
+    width: 90%; // Occupa il 90% della larghezza disponibile per evitare che sia troppo largo
+    padding: 0.6rem; // Spaziatura interna per una migliore esperienza utente
+    font-size: 1rem; // Dimensione leggibile per il testo dell'input
+  }
+
+  select {
+    width: 96%; // Leggermente più largo degli input per allinearlo visivamente
+    padding: 0.6rem; // Spaziatura interna
+    font-size: 1rem; // Dimensione del testo per il menu a tendina
+  }
+
+  textarea {
+    height: 100px; // Altezza predefinita per il campo messaggio
+    resize: vertical; // Permette all'utente di ridimensionare l'altezza
+  }
+
+  // ==========================================================================
+  // Stili per il Pulsante di Invio
+  // ==========================================================================
+
+  button {
+    width: 100%; // Occupa tutta la larghezza disponibile per uniformità
+    font-size: 1rem; // Dimensione leggibile del testo
+    padding: 0.8rem; // Spaziatura interna per un aspetto migliore
+    margin-top: 1rem; // Distanza dal campo precedente per separarlo visivamente
+  }
+
+  // ==========================================================================
+  // Stili per il Footer
+  // ==========================================================================
+
+  footer {
+    text-align: center !important; // Centra il testo all'interno del footer
+    width: 100% !important; // Occupa tutta la larghezza della pagina
+    margin: 0 auto !important; // Centra il footer nella pagina
+    padding: 1rem 0 !important; // Spaziatura verticale per un layout più pulito
+    display: flex !important; // Usa Flexbox per allineare gli elementi
+    justify-content: center !important; // Centra gli elementi del footer
+    margin-top: 2rem !important; // Distanza dalla sezione precedente
+  }
+}
+
+
+// ==========================================================================
+// Footer
+// ==========================================================================
+
+footer {
+  background: $header-footer-bg; // Usa il colore di sfondo definito per header e footer
+  color: $text-color; // Imposta il colore del testo per garantire leggibilità
+  text-align: center; // Centra tutto il testo all'interno del footer
+  padding: 1.5rem 0; // Aggiunge spazio sopra e sotto il contenuto del footer
+  margin-top: auto; // Mantiene il footer sempre in basso se il contenuto della pagina è inferiore alla viewport
+  width: 100%; // Occupa tutta la larghezza disponibile
+  position: relative; // Impedisce che si sovrapponga ad altri elementi della pagina
+  bottom: 0; // Imposta il footer alla parte inferiore della pagina (utile in alcuni layout)
+  margin-top: 2rem; // Aggiunge uno spazio sopra il footer per separarlo dal contenuto principale
+
+  p {
+    font-size: 0.9rem; // Riduce leggermente la dimensione del testo per adattarsi al footer
+    margin: 0; // Rimuove margini aggiuntivi che potrebbero influenzare l'allineamento
+  }
+}
+
+
+/* Navbar Styling */
+.navbar {
+  background: #222;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center;
+  /* CENTRA TUTTO */
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 1000;
+}
+
+/* Nascondi checkbox */
+#menu-toggle {
+  display: none;
+}
+
+/* Icona hamburger/X centrata */
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  width: 35px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.menu-icon div {
+  background: white;
+  height: 4px;
+  width: 35px;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Barre iniziali */
+.menu-icon div:nth-child(1) {
+  transform: translateY(-10px);
+}
+
+.menu-icon div:nth-child(2) {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.menu-icon div:nth-child(3) {
+  transform: translateY(10px);
+}
+
+/* Menu */
+.menu {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  background: $header-footer-bg;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  display: none;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  padding: 15px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #444;
+}
+
+.menu a:hover {
+  background: #444;
+}
+
+/* Mostra il menu */
+#menu-toggle:checked~.menu {
+  display: flex !important;
+  /* Forza la visualizzazione del menu quando il checkbox è attivo */
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background: $header-footer-bg;
+  z-index: 1000;
+}
+
+/* ✅ "X" perfetta e centrata */
+#menu-toggle:checked~.menu-icon div:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+#menu-toggle:checked~.menu-icon div:nth-child(2) {
+  opacity: 0;
+}
+
+#menu-toggle:checked~.menu-icon div:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+/* Media query per desktop */
+@media (min-width: 768px) {
+  .menu {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    background: none;
+  }
+
+  .menu a {
+    border: none;
+    padding: 10px 20px;
+  }
+
+  .menu-icon {
+    display: none;
+  }
+}
+
+
+
+/* Stile specifico per il layout dell'header su desktop */
+@media (min-width: 768px) {
+  .navbar {
+    display: flex;
+    justify-content: center;
+    /* Centra tutto orizzontalmente */
+    align-items: center;
+    background: linear-gradient(to right, #0b1613, #06110e);
+    /* Colore simile all'immagine */
+    height: 70px;
+    padding: 0 20px;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .menu a {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-decoration: none;
+    padding: 15px 20px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .menu a:hover {
+    color: #c0c0c0;
+    /* Leggero effetto hover */
+  }
+}
+
+
+
+/* Aggiunge spazio sotto l'header */
+body {
+
+  padding-top: 65px;
+  /* Riduce lo spazio sotto la navbar */
+}
+
+/* Rimuove eventuali bordi o ombre che creano la linea nera */
+.navbar {
+  border-bottom: none;
+  /* Nessun bordo sotto la navbar */
+  box-shadow: none;
+  /* Nessuna ombra che potrebbe creare la linea nera */
+}

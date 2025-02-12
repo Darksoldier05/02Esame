@@ -1,0 +1,39 @@
+[
+    {
+      "id": "proj-001",
+      "titolo": "Lavoro 1",
+      "descrizione": "Sviluppo di un sito web aziendale professionale. Il progetto include un design responsivo, ottimizzazione SEO, un CMS personalizzato e un sistema di gestione degli utenti. Implementazione di funzioni avanzate come aree riservate per i clienti e pagamenti online sicuri.",
+      "immagine": "../img/Lavoro.png"
+    },
+    {
+      "id": "proj-002",
+      "titolo": "Lavoro 2",
+      "descrizione": "Progetto grafico completo per una startup tecnologica. Creazione di un logo distintivo, identità visiva aziendale e materiali di marketing. Il pacchetto include biglietti da visita, brochure interattive e modelli per i social media, ottimizzati per una comunicazione efficace.",
+      "immagine": "../img/Lavoro.png"
+    },
+    {
+      "id": "proj-003",
+      "titolo": "Lavoro 3",
+      "descrizione": "Realizzazione di un e-commerce personalizzato. Il sito include una piattaforma di gestione prodotti, sistema di pagamento integrato con Stripe e PayPal, funzioni avanzate di tracciamento ordini e gestione magazzino. Ottimizzazione per il mobile e UX/UI studiata per massimizzare le conversioni.",
+      "immagine": "../img/Lavoro.png"
+    },
+    {
+      "id": "proj-004",
+      "titolo": "Lavoro 4",
+      "descrizione": "Progettazione e sviluppo di un'app web per la gestione degli eventi. L'app consente la registrazione degli utenti, creazione e personalizzazione degli eventi, notifiche in tempo reale e un'area riservata con dashboard interattiva. Back-end sviluppato in PHP e database MySQL.",
+      "immagine": "../img/Lavoro.png"
+    },
+    {
+      "id": "proj-005",
+      "titolo": "Lavoro 5",
+      "descrizione": "Redesign di un portale aziendale per una grande impresa. Focus su accessibilità, velocità e compatibilità con tutti i dispositivi. Integrazione con API esterne per sincronizzazione dati in tempo reale. Test A/B eseguiti per garantire la miglior esperienza utente possibile.",
+      "immagine": "../img/Lavoro.png"
+    },
+    {
+      "id": "proj-006",
+      "titolo": "Lavoro 6",
+      "descrizione": "Sviluppo di un sistema di prenotazione online per un'agenzia di viaggi. Il sistema include un'interfaccia intuitiva per la selezione delle destinazioni, gestione automatizzata delle disponibilità, calcolo dinamico dei prezzi e integrazione con piattaforme di pagamento.",
+      "immagine": "../img/Lavoro.png"
+    }
+  ]
+  

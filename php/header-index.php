@@ -1,0 +1,14 @@
+<?php
+echo '<header>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">☰</label>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="index.php" title="Torna alla pagina principale">Home</a></li>
+                <li><a href="php/chi-sono.php" title="Scopri di più su di me">Chi Sono</a></li>
+                <li><a href="php/servizi-offerti.php" title="Guarda i servizi che offro">Servizi Offerti</a></li>
+                <li><a href="php/lavori.php" title="Guarda il mio portfolio e i miei lavori">Lavori</a></li>
+            </ul>
+        </nav>
+</header>';
+?>
